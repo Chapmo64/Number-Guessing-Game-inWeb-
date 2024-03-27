@@ -1,36 +1,26 @@
-
-
-
 let min = 50;
 let max = 100;
-let answer;
-
-answer = Math.floor(Math.random()*(max-min + 1) + min);
-
-let attemp=0;
-let guess;
+let answer = Math.floor(Math.random() * (max - min + 1) + min);
+let attempt = 0;
 let running = true;
 
-while(running){
-    guess = window.prompt(`Guess between ${min}-${max} `);
-    guess = Number(guess);
+        function checkGuess() {
+            let guess = parseInt(document.getElementById('userGuess').value);
 
-    if(isNaN(guess)){
-        window.alert("Dumbass");
-    }else if(guess<min||guess>=max){
-        window.alert("Dumbass");
-    }
-    else{
-        attemp++;
-        if(guess<answer){
-            window.alert("Bigger!");
-        }else if(guess>answer){
-            window.alert("Smaller!");
-        }else{
-            window.alert(`Nice! You took ${attemp} attempts and the number was ${answer}`);
-            console.log(answer);
-            running = false;
+            const dum = document.getElementById("dum");
+
+            if (isNaN(guess) || guess < min || guess > max) {
+                dum.textContent = `What are u, A DUMASS!!`;
+            } else {
+                attempt++;
+                if (guess < answer) {
+                    dum.textContent = `Bigger!`;
+                } else if (guess > answer) {
+                    dum.textContent = `Smaller!`;
+                } else {
+                    dum.textContent = `Congratulations! You took ${attempt} attempts and the number was ${answer}`;
+                    console.log(answer);
+                    running = false;
+                }
+            }
         }
-    }
-
-}
